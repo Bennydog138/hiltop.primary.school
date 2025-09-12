@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Events — Hiltop Primary School</title>
+  <meta name="description" content="Upcoming events at Hiltop Primary School: open mornings, concerts and community events." />
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html"><img src="images/logo.svg" alt="" class="logo" /><div class="brand-text"><strong>Hiltop Primary</strong></div></a>
+      <nav class="primary-nav"><ul class="nav-list"><li><a href="index.html">Home</a></li><li><a class="active" href="events.html">Events</a></li></ul></nav>
+    </div>
+  </header>
+
+  <main id="main" class="container">
+    <h1>Events & Calendar</h1>
+
+    <section class="card">
+      <div class="controls">
+        <label>Filter by month:
+          <select id="eventMonth" aria-label="Filter events by month">
+            <option value="all">All months</option>
+          </select>
+        </label>
+      </div>
+
+      <ul id="eventsList" class="event-list">
+        <!-- Fallback events (no-JS) -->
+        <li><time datetime="2025-10-15">15 Oct 2025</time> — Open Morning (9:30)</li>
+        <li><time datetime="2025-11-03">3 Nov 2025</time> — Harvest Festival</li>
+        <li><time datetime="2025-12-18">18 Dec 2025</time> — End of Term Concert</li>
+      </ul>
+
+      <a class="link-more" href="contact.html">Contact the office to book for events</a>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner"><div class="footer-col"><strong>Hiltop Primary</strong></div><div class="footer-col"><a href="policies.html">Policies</a></div></div>
+    <div class="site-copy"><small>© <span id="currentYear7"></span> Hiltop Primary School</small></div>
+  </footer>
+
+  <script src="assets/scripts.js" defer></script>
+</body>
+</html>

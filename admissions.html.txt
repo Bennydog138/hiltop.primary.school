@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Admissions — Hiltop Primary School</title>
+  <meta name="description" content="Admissions information for Hiltop Primary School: Reception and in-year admissions, open mornings and contact details." />
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html"><img src="images/logo.svg" alt="" class="logo" /><div class="brand-text"><strong>Hiltop Primary</strong></div></a>
+      <nav class="primary-nav"><ul class="nav-list"><li><a href="index.html">Home</a></li><li><a class="active" href="admissions.html">Admissions</a></li></ul></nav>
+    </div>
+  </header>
+
+  <main id="main" class="container">
+    <h1>Admissions</h1>
+    <p class="lead">Information for parents on how to apply for Reception and in-year admission.</p>
+
+    <section class="card">
+      <h2>Reception admissions</h2>
+      <p>Reception applications are managed via the local authority. Applications open in the autumn prior to the school year starting. Please consult your local council website for exact dates and the application form.</p>
+      <p>Hiltop holds regular open mornings — see our <a href="events.html">events page</a> for dates. We recommend attending an open morning if you are considering applying.</p>
+    </section>
+
+    <section class="card mt-2">
+      <h2>In-year admissions</h2>
+      <p>To apply for a place during the school year, contact the school office: <a href="mailto:admissions@hiltop.school">admissions@hiltop.school</a> or call 01234 567 890. Please provide details of your child's current year group and reasons for the move.</p>
+    </section>
+
+    <section class="card mt-2">
+      <h2>Admissions criteria</h2>
+      <ol>
+        <li>Children with an Education, Health and Care Plan naming the school.</li>
+        <li>Looked-after children and previously looked-after children.</li>
+        <li>Children living within the school’s catchment area.</li>
+        <li>Other children, in order of distance from the school.</li>
+      </ol>
+      <p>Full criteria, appeals and in-year application forms are available on our <a href="policies.html">policies page</a>.</p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner"><div class="footer-col"><strong>Hiltop Primary</strong></div><div class="footer-col"><a href="contact.html">Contact</a></div></div>
+    <div class="site-copy"><small>© <span id="currentYear6"></span> Hiltop Primary School</small></div>
+  </footer>
+
+  <script src="assets/scripts.js" defer></script>
+</body>
+</html>

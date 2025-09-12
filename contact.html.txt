@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Contact — Hiltop Primary School</title>
+  <meta name="description" content="Contact Hiltop Primary School: office hours, phone, email and a contact form." />
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html"><img src="images/logo.svg" alt="" class="logo" /><div class="brand-text"><strong>Hiltop Primary</strong></div></a>
+      <nav class="primary-nav"><ul class="nav-list"><li><a href="index.html">Home</a></li><li><a class="active" href="contact.html">Contact</a></li></ul></nav>
+    </div>
+  </header>
+
+  <main id="main" class="container">
+    <h1>Contact us</h1>
+    <p class="lead">We welcome calls and emails from parents and the community. Use the form or the contact details below.</p>
+
+    <section class="grid grid-2">
+      <form id="contactForm" class="card form" action="#" novalidate>
+        <label>Full name<input name="name" type="text" required></label>
+        <label>Email address<input name="email" type="email" required></label>
+        <label>Phone (optional)<input name="phone" type="tel"></label>
+        <label>Message<textarea name="message" rows="6" required></textarea></label>
+        <div class="form-actions">
+          <button class="btn btn-primary" type="submit">Send message</button>
+          <button class="btn btn-ghost" type="reset">Reset</button>
+        </div>
+        <div id="contactResult" class="hidden"></div>
+      </form>
+
+      <aside class="card contact-info">
+        <h2>School Office</h2>
+        <p>Hiltop Primary School<br />12 Hillcrest Road<br />Townsville, HT1 2AB</p>
+        <p><strong>Tel:</strong> <a href="tel:+441234567890">01234 567 890</a></p>
+        <p><strong>Email:</strong> <a href="mailto:info@hiltop.school">info@hiltop.school</a></p>
+        <h3>Office hours</h3>
+        <p>Mon—Fri: 08:30 — 16:00</p>
+      </aside>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner"><div class="footer-col"><strong>Hiltop Primary</strong></div><div class="footer-col"><a href="policies.html">Policies</a></div></div>
+    <div class="site-copy"><small>© <span id="currentYear10"></span> Hiltop Primary School</small></div>
+  </footer>
+
+  <script src="assets/scripts.js" defer></script>
+</body>
+</html>
