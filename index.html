@@ -1,170 +1,82 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Hiltop Primary School</title>
-  <meta name="description" content="Hiltop Primary — Inspiring young minds through kindness, curiosity and creativity." />
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <a class="skip-link" href="#main">Skip to main content</a>
-
-  <header class="site-header" role="banner">
-    <div class="container header-inner">
-      <a class="brand" href="index.html" aria-label="Hiltop Primary School home">
-        <img src="logo.svg" alt="Hiltop Primary logo" class="logo" />
-        <div class="brand-text">
-          <strong>Hiltop Primary School</strong>
-          <span class="tagline">Learning • Kindness • Growth</span>
-        </div>
-      </a>
-
-      <button id="menuToggle" class="menu-toggle" aria-controls="primaryNav" aria-expanded="false" aria-label="Toggle navigation">
-        ☰
-      </button>
-
-      <nav id="primaryNav" class="primary-nav" role="navigation" aria-label="Main navigation">
-        <ul class="nav-list">
-          <li><a class="active" href="index.html">Home</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="staff.html">Our Staff</a></li>
-          <li><a href="leadership.html">Leadership</a></li>
-          <li><a href="careers.html">Careers</a></li>
-          <li><a href="admissions.html">Admissions</a></li>
-          <li><a href="events.html">Events</a></li>
-          <li><a href="gallery.html">Gallery</a></li>
-          <li><a href="policies.html">Policies</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-      </nav>
+  <nav class="navbar">
+    <div class="logo"><a href="index.html">Hiltop Primary School</a></div>
+    <div class="nav-links">
+      <a href="about.html">About</a>
+      <a href="staff.html">Our Staff</a>
+      <a href="leadership.html">Leadership</a>
+      <a href="careers.html">Careers</a>
+      <a href="admissions.html">Admissions</a>
+      <a href="events.html">Events</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="contact.html">Contact</a>
     </div>
-  </header>
+  </nav>
 
-  <main id="main" tabindex="-1">
-    <!-- Hero -->
-    <section class="hero">
-      <div class="hero-inner container">
-        <div class="hero-text">
-          <h1>Welcome to Hiltop Primary School</h1>
-          <p class="lead">Be Kind, Work Hard</p>
-          <div class="hero-actions">
-            <a class="btn btn-primary" href="admissions.html">Admissions</a>
-            <a class="btn btn-ghost" href="about.html">About our school</a>
-          </div>
-        </div>
-        <div class="hero-media" aria-hidden="true">
-          <img src="iamge.png" alt="Our School" />
-        </div>
-      </div>
-    </section>
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Welcome to Hiltop Primary School</h1>
+      <p>Where learning, creativity, and growth come together.</p>
+      <a href="admissions.html" class="btn">Enroll Now</a>
+    </div>
+  </section>
 
-    <!-- Quick features -->
-    <section class="container features">
-      <h2 class="sr-only">Why choose Hiltop?</h2>
-      <div class="grid grid-3">
-        <article class="feature card">
-          <h3>Outstanding Teaching</h3>
-          <p>Experienced, caring staff who personalise learning and inspire curiosity.</p>
-        </article>
-        <article class="feature card">
-          <h3>Safeguarding & Wellbeing</h3>
-          <p>Our children are safe, happy and supported — wellbeing is central to everything we do.</p>
-        </article>
-        <article class="feature card">
-          <h3>Clubs & Enrichment</h3>
-          <p>Wide range of clubs: music, sport, coding, drama — something for every child.</p>
-        </article>
-      </div>
-    </section>
-
-    <!-- Latest news & events -->
-    <section class="container split">
+  <section>
+    <h2 class="section-title">Why Choose Us?</h2>
+    <div class="grid grid-3">
       <div class="card">
-        <h2>Latest news</h2>
-        <ul class="news-list">
-          <li><strong>Open Morning:</strong> Join us on <time datetime="2025-10-15">15 October 2025</time>. Book via Admissions.</li>
-          <li><strong>Harvest Festival:</strong> Friday <time datetime="2025-11-03">3 November 2025</time> — families welcome.</li>
-        </ul>
-        <a class="link-more" href="events.html">View all events →</a>
+        <h3>Modern Facilities</h3>
+        <p>Bright classrooms, labs, and playgrounds designed for student engagement.</p>
       </div>
-
-      <div class="card contact-cta">
-        <h2>Contact the school office</h2>
-        <p>Phone: <a href="tel:+441234567890">01234 567 890</a></p>
-        <p>Email: <a href="mailto:info@hiltop.school">info@hiltop.school</a></p>
-        <a class="btn" href="contact.html">Get in touch</a>
+      <div class="card">
+        <h3>Expert Teachers</h3>
+        <p>Qualified staff committed to nurturing every child’s potential.</p>
       </div>
-    </section>
-
-    <!-- Staff preview -->
-    <section class="container">
-      <h2>Meet a few of our team</h2>
-      <div id="staffPreview" class="grid grid-3 staff-preview" aria-live="polite">
-        <!-- JavaScript will render staff cards here; fallback HTML below ensures content if JS disabled -->
-        <noscript>
-          <div class="card staff-card">
-            <img src="headteacher.jpg" alt="Mrs Jane Smith — Headteacher">
-            <h3>Mrs Jane Smith</h3>
-            <p class="role">Headteacher</p>
-          </div>
-          <div class="card staff-card">
-            <img src="staff-1.jpg" alt="Mr Tom Harris — Year 4 teacher">
-            <h3>Mr Tom Harris</h3>
-            <p class="role">Year 4 Teacher</p>
-          </div>
-          <div class="card staff-card">
-            <img src="staff-2.jpg" alt="Ms Rachel Green — SENDCo">
-            <h3>Ms Rachel Green</h3>
-            <p class="role">SENDCo</p>
-          </div>
-        </noscript>
-      </div>
-      <div class="actions">
-        <a class="btn btn-ghost" href="staff.html">View all staff</a>
-      </div>
-    </section>
-  </main>
-
-  <footer class="site-footer" role="contentinfo">
-    <div class="container footer-inner">
-      <div class="footer-col">
-        <strong>Hiltop Primary School</strong>
-        <address>
-          12 Hillcrest Road<br />
-          Townsville, HT1 2AB<br />
-          Tel: <a href="tel:+441234567890">01234 567 890</a><br />
-          <a href="mailto:info@hiltop.school">info@hiltop.school</a>
-        </address>
-      </div>
-
-      <div class="footer-col">
-        <h4>Explore</h4>
-        <ul class="footer-links">
-          <li><a href="about.html">About</a></li>
-          <li><a href="admissions.html">Admissions</a></li>
-          <li><a href="policies.html">Policies</a></li>
-        </ul>
-      </div>
-
-      <div class="footer-col">
-        <h4>Quick links</h4>
-        <ul class="footer-links">
-          <li><a href="careers.html">Careers</a></li>
-          <li><a href="events.html">Events</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
+      <div class="card">
+        <h3>Holistic Learning</h3>
+        <p>Programs that focus on academics, arts, sports, and social skills.</p>
       </div>
     </div>
-    <div class="site-copy">
-      <small>© <span id="currentYear"></span> Hiltop Primary School — All rights reserved.</small>
+  </section>
+
+  <section>
+    <h2 class="section-title">Upcoming Events</h2>
+    <div class="grid grid-3">
+      <div class="card">
+        <h3>Science Fair 2025</h3>
+        <p>Students showcase innovative projects and experiments.</p>
+        <a href="events.html" class="btn">Learn More</a>
+      </div>
+      <div class="card">
+        <h3>Annual Sports Day</h3>
+        <p>Fun-filled activities to encourage teamwork and fitness.</p>
+        <a href="events.html" class="btn">Learn More</a>
+      </div>
+      <div class="card">
+        <h3>Art Exhibition</h3>
+        <p>Celebrating creativity with student art displays and workshops.</p>
+        <a href="events.html" class="btn">Learn More</a>
+      </div>
     </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Hiltop Primary School | <a href="contact.html">Contact Us</a></p>
+    <p>
+      <a href="#">Facebook</a> |
+      <a href="#">Twitter</a> |
+      <a href="#">Instagram</a>
+    </p>
   </footer>
 
-  <script src="scripts.js" defer></script>
+  <script src="scripts.js"></script>
 </body>
 </html>
-
-
-
-
