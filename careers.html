@@ -1,88 +1,64 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Careers — Hiltop Primary School</title>
-  <meta name="description" content="Work at Hiltop Primary School — vacancies, how to apply and staff benefits." />
-  <link rel="stylesheet" href="styles.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Careers - Hiltop Primary School</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <a class="skip-link" href="#main">Skip to main content</a>
-
-  <header class="site-header">
-    <div class="container header-inner">
-      <a class="brand" href="index.html"><img src="logo.svg" alt="" class="logo" /><div class="brand-text"><strong>Hiltop Primary</strong></div></a>
-      <nav class="primary-nav">
-        <ul class="nav-list"><li><a href="index.html">Home</a></li><li><a class="active" href="careers.html">Careers</a></li></ul>
-      </nav>
+  <nav class="navbar">
+    <div class="logo"><a href="index.html">Hiltop Primary School</a></div>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="staff.html">Our Staff</a>
+      <a href="leadership.html">Leadership</a>
+      <a href="careers.html">Careers</a>
+      <a href="admissions.html">Admissions</a>
+      <a href="events.html">Events</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="contact.html">Contact</a>
     </div>
-  </header>
+  </nav>
 
-  <main id="main" class="container">
-    <h1>Careers at Hiltop</h1>
-    <p class="lead">We are always keen to hear from talented, kind and motivated people who want to work with children.</p>
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Join Our Team</h1>
+      <p>Be part of a community dedicated to excellence in education.</p>
+    </div>
+  </section>
 
-    <section class="card">
-      <h2>Working here</h2>
-      <ul>
-        <li>Supportive staff culture and professional development.</li>
-        <li>Competitive pension and pay (depending on role).</li>
-        <li>Child-first approach with strong safeguarding and wellbeing support.</li>
-      </ul>
-    </section>
-
-    <section id="vacancies" class="mt-2">
-      <h2>Current vacancies</h2>
-      <div id="vacancyList" class="grid grid-2">
-        <!-- fallback vacancy -->
-        <article class="card vacancy">
-          <h3>KS2 Class Teacher (Full time, Permanent)</h3>
-          <p>Start: January 2026 — Closing date: 30 October 2025</p>
-          <div class="vacancy-actions">
-            <button class="btn apply-btn" data-role="KS2 Class Teacher">Apply</button>
-            <a class="link-more" href="mailto:hr@hiltop.school?subject=Application%20for%20KS2%20Teacher">Email HR</a>
-          </div>
-        </article>
+  <section>
+    <h2 class="section-title">Current Openings</h2>
+    <div class="grid grid-3">
+      <div class="card">
+        <h3>Primary School Teacher</h3>
+        <p>Full-time, Mathematics and Science</p>
+        <a href="contact.html" class="btn">Apply Now</a>
       </div>
-    </section>
-
-    <section class="card mt-2">
-      <h2>How to apply</h2>
-      <p>Please send a CV and covering letter to <a href="mailto:hr@hiltop.school">hr@hiltop.school</a>. Shortlisted candidates will be invited to interview and asked to complete safeguarding checks.</p>
-    </section>
-  </main>
-
-  <!-- Application modal -->
-  <div id="applyModal" class="modal" aria-hidden="true" role="dialog" aria-labelledby="applyModalTitle">
-    <div class="modal-content card">
-      <button class="modal-close" aria-label="Close">&times;</button>
-      <h2 id="applyModalTitle">Apply for position</h2>
-      <form id="applyForm" class="form">
-        <label>Position<input type="text" id="applyPosition" name="position" readonly></label>
-        <label>Full name<input type="text" name="name" required></label>
-        <label>Email<input type="email" name="email" required></label>
-        <label>Cover letter<textarea name="cover" rows="6" required></textarea></label>
-        <label>Attach CV (optional)<input type="file" name="cv" accept=".pdf,.doc,.docx"></label>
-        <div class="modal-actions">
-          <button type="submit" class="btn btn-primary">Send application</button>
-          <button type="button" class="btn btn-ghost modal-close">Cancel</button>
-        </div>
-      </form>
-      <div id="applyResult" class="hidden"></div>
+      <div class="card">
+        <h3>Art & Music Teacher</h3>
+        <p>Part-time, Creative Arts Department</p>
+        <a href="contact.html" class="btn">Apply Now</a>
+      </div>
+      <div class="card">
+        <h3>IT Coordinator</h3>
+        <p>Full-time, Manage school IT infrastructure and labs</p>
+        <a href="contact.html" class="btn">Apply Now</a>
+      </div>
     </div>
-  </div>
+  </section>
 
-  <footer class="site-footer">
-    <div class="container footer-inner">
-      <div class="footer-col"><strong>Hiltop Primary School</strong></div>
-      <div class="footer-col"><a href="policies.html">Safeguarding & Policies</a></div>
-    </div>
-    <div class="site-copy"><small>© <span id="currentYear5"></span> Hiltop Primary School</small></div>
+  <footer>
+    <p>&copy; 2025 Hiltop Primary School | <a href="contact.html">Contact Us</a></p>
+    <p>
+      <a href="#">Facebook</a> |
+      <a href="#">Twitter</a> |
+      <a href="#">Instagram</a>
+    </p>
   </footer>
 
-  <script src="scripts.js" defer></script>
+  <script src="scripts.js"></script>
 </body>
 </html>
-
-
