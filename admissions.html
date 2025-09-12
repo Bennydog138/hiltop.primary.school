@@ -1,56 +1,74 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Admissions — Hiltop Primary School</title>
-  <meta name="description" content="Admissions information for Hiltop Primary School: Reception and in-year admissions, open mornings and contact details." />
-  <link rel="stylesheet" href="styles.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admissions - Hiltop Primary School</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <a class="skip-link" href="#main">Skip to main content</a>
-
-  <header class="site-header">
-    <div class="container header-inner">
-      <a class="brand" href="index.html"><img src="logo.svg" alt="" class="logo" /><div class="brand-text"><strong>Hiltop Primary</strong></div></a>
-      <nav class="primary-nav"><ul class="nav-list"><li><a href="index.html">Home</a></li><li><a class="active" href="admissions.html">Admissions</a></li></ul></nav>
+  <nav class="navbar">
+    <div class="logo"><a href="index.html">Hiltop Primary School</a></div>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="staff.html">Our Staff</a>
+      <a href="leadership.html">Leadership</a>
+      <a href="careers.html">Careers</a>
+      <a href="admissions.html">Admissions</a>
+      <a href="events.html">Events</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="contact.html">Contact</a>
     </div>
-  </header>
+  </nav>
 
-  <main id="main" class="container">
-    <h1>Admissions</h1>
-    <p class="lead">Information for parents on how to apply for Reception and in-year admission.</p>
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Admissions</h1>
+      <p>Enroll your child at Hiltop Primary School today.</p>
+      <a href="#enroll-form" class="btn">Start Application</a>
+    </div>
+  </section>
 
-    <section class="card">
-      <h2>Reception admissions</h2>
-      <p>Reception applications are managed via the local authority. Applications open in the autumn prior to the school year starting. Please consult your local council website for exact dates and the application form.</p>
-      <p>Hiltop holds regular open mornings — see our <a href="events.html">events page</a> for dates. We recommend attending an open morning if you are considering applying.</p>
-    </section>
+  <section>
+    <h2 class="section-title">How to Apply</h2>
+    <div class="grid grid-3">
+      <div class="card">
+        <h3>Step 1</h3>
+        <p>Submit the online application form with all required documents.</p>
+      </div>
+      <div class="card">
+        <h3>Step 2</h3>
+        <p>Attend a school tour and meet our admissions team.</p>
+      </div>
+      <div class="card">
+        <h3>Step 3</h3>
+        <p>Receive confirmation and start your child’s journey at Hiltop.</p>
+      </div>
+    </div>
+  </section>
 
-    <section class="card mt-2">
-      <h2>In-year admissions</h2>
-      <p>To apply for a place during the school year, contact the school office: <a href="mailto:admissions@hiltop.school">admissions@hiltop.school</a> or call 01234 567 890. Please provide details of your child's current year group and reasons for the move.</p>
-    </section>
+  <section id="enroll-form">
+    <h2 class="section-title">Application Form</h2>
+    <form class="grid" style="gap:1rem; max-width:600px; margin:0 auto;">
+      <input type="text" placeholder="Child's Full Name" required>
+      <input type="text" placeholder="Parent/Guardian Name" required>
+      <input type="email" placeholder="Email Address" required>
+      <input type="tel" placeholder="Phone Number" required>
+      <textarea placeholder="Additional Information"></textarea>
+      <button type="submit" class="btn">Submit Application</button>
+    </form>
+  </section>
 
-    <section class="card mt-2">
-      <h2>Admissions criteria</h2>
-      <ol>
-        <li>Children with an Education, Health and Care Plan naming the school.</li>
-        <li>Looked-after children and previously looked-after children.</li>
-        <li>Children living within the school’s catchment area.</li>
-        <li>Other children, in order of distance from the school.</li>
-      </ol>
-      <p>Full criteria, appeals and in-year application forms are available on our <a href="policies.html">policies page</a>.</p>
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <div class="container footer-inner"><div class="footer-col"><strong>Hiltop Primary</strong></div><div class="footer-col"><a href="contact.html">Contact</a></div></div>
-    <div class="site-copy"><small>© <span id="currentYear6"></span> Hiltop Primary School</small></div>
+  <footer>
+    <p>&copy; 2025 Hiltop Primary School | <a href="contact.html">Contact Us</a></p>
+    <p>
+      <a href="#">Facebook</a> |
+      <a href="#">Twitter</a> |
+      <a href="#">Instagram</a>
+    </p>
   </footer>
 
-  <script src="scripts.js" defer></script>
+  <script src="scripts.js"></script>
 </body>
 </html>
-
-
