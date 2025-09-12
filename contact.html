@@ -49,13 +49,15 @@
 
   <section>
     <h2 class="section-title">Contact Form</h2>
-    <form class="grid" style="gap:1rem; max-width:600px; margin:0 auto;">
-      <input type="text" placeholder="Your Name" required>
-      <input type="email" placeholder="Email Address" required>
-      <input type="tel" placeholder="Phone Number">
-      <textarea placeholder="Your Message" required></textarea>
-      <button type="submit" class="btn">Send Message</button>
-    </form>
+    <form class="grid" style="gap:1rem; max-width:600px; margin:0 auto;"
+      action="https://formspree.io/f/xgvlpvzk" 
+      method="POST">
+    <input type="text" name="name" placeholder="Your Name" required>
+    <input type="email" name="email" placeholder="Email Address" required>
+    <input type="tel" name="phone" placeholder="Phone Number">
+    <textarea name="message" placeholder="Your Message" required></textarea>
+    <button type="submit" class="btn">Send Message</button>
+  </form>
   </section>
 
   <footer>
@@ -69,4 +71,5 @@
   <script src="scripts.js"></script>
 </body>
 </html>
+
 
