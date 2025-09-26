@@ -1,0 +1,1958 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>School Website</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            cursor: url('data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2232%22%20height%3D%2232%22%20viewBox%3D%220%200%2032%2032%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22gradient%22%20x1%3D%220%25%22%20y1%3D%220%25%22%20x2%3D%22100%25%22%20y2%3D%22100%25%22%3E%3Cstop%20offset%3D%220%25%22%20style%3D%22stop-color%3A%234FC3F7%22/%3E%3Cstop%20offset%3D%22100%25%22%20style%3D%22stop-color%3A%232196F3%22/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath%20d%3D%22M2%202l4%204-4%204V2z%22%20fill%3D%22url(%23gradient)%22/%3E%3C/svg%3E'), auto;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            animation: fadeIn 1s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideIn {
+            from { transform: translateX(-100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
+        }
+
+        .navbar {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 1rem 2rem;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            animation: slideIn 1s ease-out;
+        }
+
+        .nav-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-links a:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 6rem 2rem 2rem;
+        }
+
+        .page {
+            display: none;
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        .hero {
+            text-align: center;
+            color: white;
+            margin-bottom: 4rem;
+            animation: bounce 2s infinite;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 1rem 0;
+            color: white;
+            transition: all 0.3s ease;
+            animation: slideIn 1s ease-out;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .staff-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .form-group {
+            margin: 1rem 0;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: white;
+        }
+
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: none;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.9);
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus, .form-group textarea:focus {
+            outline: none;
+            transform: scale(1.02);
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+        }
+
+        .btn {
+            background: linear-gradient(45deg, #2196F3, #21CBF3);
+            color: white;
+            border: none;
+            padding: 0.75rem 2rem;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            animation: pulse 2s infinite;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 2000;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal-content {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            margin: 5% auto;
+            padding: 2rem;
+            width: 80%;
+            max-width: 600px;
+            border-radius: 20px;
+            color: #333;
+            animation: slideIn 0.5s ease;
+        }
+
+        .close {
+            float: right;
+            font-size: 2rem;
+            cursor: pointer;
+            color: #333;
+        }
+
+        .timetable {
+            display: grid;
+            grid-template-columns: 120px repeat(7, 1fr);
+            gap: 1px;
+            background: #333;
+            margin: 1rem 0;
+        }
+
+        .timetable-cell {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 0.5rem;
+            text-align: center;
+            min-height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .timetable-header {
+            background: linear-gradient(45deg, #2196F3, #21CBF3);
+            color: white;
+            font-weight: bold;
+        }
+
+        .support-ticket {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-left: 4px solid #2196F3;
+        }
+
+        .status-online {
+            color: #4CAF50;
+            animation: pulse 2s infinite;
+        }
+
+        .status-offline {
+            color: #f44336;
+        }
+
+        .notebook {
+            min-height: 300px;
+            background: rgba(255, 255, 255, 0.9);
+            color: #333;
+            border-radius: 10px;
+            padding: 1rem;
+        }
+
+        .event-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            color: white;
+            animation: slideIn 1s ease-out;
+        }
+
+        .year-selector {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+
+        .year-btn {
+            background: rgba(255, 255, 255, 0.2);
+            border: 2px solid transparent;
+            color: white;
+            padding: 1rem;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .year-btn.selected {
+            border-color: #2196F3;
+            background: rgba(33, 150, 243, 0.3);
+        }
+
+        .image-upload-area {
+            border: 2px dashed rgba(255, 255, 255, 0.5);
+            border-radius: 10px;
+            padding: 2rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .image-upload-area:hover {
+            border-color: #2196F3;
+            background: rgba(33, 150, 243, 0.1);
+        }
+
+        .staff-card {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .staff-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transform: rotate(45deg);
+            transition: all 0.6s;
+            opacity: 0;
+        }
+
+        .staff-card:hover::before {
+            animation: shimmer 1.5s ease-in-out;
+            opacity: 1;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <ul class="nav-links">
+            <li><a href="#" onclick="showPage('home')">Home</a></li>
+            <li><a href="#" onclick="showPage('staff')">Staff</a></li>
+            <li><a href="#" onclick="showPage('gallery')">Gallery</a></li>
+            <li><a href="#" onclick="showPage('applications')">Applications</a></li>
+            <li><a href="#" onclick="showPage('support')">Support</a></li>
+            <li><a href="#" onclick="showPage('staff-login')">Staff Login</a></li>
+            <li><a href="#" onclick="showPage('slt')">SLT</a></li>
+            <li><a href="#" onclick="showPage('news')">News</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <!-- Home Page -->
+        <div id="home" class="page active">
+            <div class="hero">
+                <h1>Welcome to Hiltop Primary School</h1>
+                <p>Excellence in Education</p>
+            </div>
+            
+            <div class="card">
+                <h2>About Our School</h2>
+                <p>We are committed to providing the highest quality education in a supportive and nurturing environment. Our dedicated staff work tirelessly to ensure every student reaches their full potential.</p>
+            </div>
+
+            <div class="card">
+                <h2>Featured Staff</h2>
+                <div class="staff-grid" id="featured-staff">
+                    <!-- Featured staff will be populated here -->
+                </div>
+            </div>
+
+            <div class="card">
+                <h2>Quick Links</h2>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
+                    <button class="btn" onclick="showPage('applications')">Apply Now</button>
+                    <button class="btn" onclick="showPage('support')">Get Support</button>
+                    <button class="btn" onclick="showPage('gallery')">View Gallery</button>
+                    <button class="btn" onclick="showPage('news')">Latest News</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Staff Page -->
+        <div id="staff" class="page">
+            <div class="hero">
+                <h1>Our Amazing Staff</h1>
+                <p>Meet the dedicated professionals who make our school great</p>
+            </div>
+            <div class="staff-grid" id="all-staff">
+                <!-- Staff members will be populated here -->
+            </div>
+        </div>
+
+        <!-- Gallery Page -->
+        <div id="gallery" class="page">
+            <div class="hero">
+                <h1>School Gallery</h1>
+                <p>Capturing our memorable moments</p>
+            </div>
+            <button class="btn" onclick="openModal('add-image-modal')">Add New Image</button>
+            <div class="gallery-grid" id="gallery-grid">
+                <!-- Gallery items will be populated here -->
+            </div>
+        </div>
+
+        <!-- Applications Page -->
+        <div id="applications" class="page">
+            <div class="hero">
+                <h1>Staff Applications</h1>
+                <p>Join our team</p>
+            </div>
+            <div class="card">
+                <form id="application-form">
+                    <div class="form-group">
+                        <label for="discord-user">Discord Username:</label>
+                        <input type="text" id="discord-user" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="role-applying">Role Applying For:</label>
+                        <input type="text" id="role-applying" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="why-choose">Why should we choose you?</label>
+                        <textarea id="why-choose" rows="4" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="what-different">What makes you different?</label>
+                        <textarea id="what-different" rows="4" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="experience">What experience do you have?</label>
+                        <textarea id="experience" rows="4" required></textarea>
+                    </div>
+                    <button type="submit" class="btn">Submit Application</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Support Page -->
+        <div id="support" class="page">
+            <div class="hero">
+                <h1>Support Center</h1>
+                <p>We're here to help</p>
+            </div>
+            <div id="support-login" class="card">
+                <h3>Login to Support</h3>
+                <form id="support-login-form">
+                    <div class="form-group">
+                        <label for="support-username">Username:</label>
+                        <input type="text" id="support-username" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="support-password">Password:</label>
+                        <input type="password" id="support-password" required>
+                    </div>
+                    <button type="submit" class="btn">Login</button>
+                    <button type="button" class="btn" onclick="showSupportRegister()">Create Account</button>
+                </form>
+            </div>
+            <div id="support-register" class="card" style="display: none;">
+                <h3>Create Support Account</h3>
+                <form id="support-register-form">
+                    <div class="form-group">
+                        <label for="new-support-username">Username:</label>
+                        <input type="text" id="new-support-username" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="new-support-password">Password:</label>
+                        <input type="password" id="new-support-password" required>
+                    </div>
+                    <button type="submit" class="btn">Create Account</button>
+                    <button type="button" class="btn" onclick="showSupportLogin()">Back to Login</button>
+                </form>
+            </div>
+            <div id="support-dashboard" class="card" style="display: none;">
+                <h3>Support Dashboard</h3>
+                <div id="user-tickets"></div>
+                <button class="btn" onclick="createNewTicket()">Create New Ticket</button>
+            </div>
+        </div>
+
+        <!-- Staff Login Page -->
+        <div id="staff-login" class="page">
+            <div class="hero">
+                <h1>Staff Login</h1>
+                <p>Access your staff resources</p>
+            </div>
+            <div class="card">
+                <form id="staff-login-form">
+                    <div class="form-group">
+                        <label for="staff-username">Username:</label>
+                        <input type="text" id="staff-username" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="staff-password">Password:</label>
+                        <input type="password" id="staff-password" required>
+                    </div>
+                    <button type="submit" class="btn">Login</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Staff Dashboard -->
+        <div id="staff-dashboard" class="page">
+            <div class="hero">
+                <h1>Staff Dashboard</h1>
+                <p id="staff-welcome">Welcome back!</p>
+            </div>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem;">
+                <button class="btn" onclick="showStaffSection('curriculum')">View Curriculum</button>
+                <button class="btn" onclick="showStaffSection('students')">Manage Students</button>
+                <button class="btn" onclick="showStaffSection('safeguarding')">Safeguarding</button>
+                <button class="btn" onclick="showStaffSection('first-aid')">First Aid</button>
+                <button class="btn" onclick="showStaffSection('behaviour')">Behaviour Management</button>
+                <button class="btn" onclick="showStaffSection('notebook')">My Notebook</button>
+            </div>
+            <div id="staff-content" class="card" style="margin-top: 2rem;">
+                <!-- Dynamic staff content -->
+            </div>
+        </div>
+
+        <!-- SLT Login Page -->
+        <div id="slt" class="page">
+            <div class="hero">
+                <h1>SLT Login</h1>
+                <p>Senior Leadership Team Access</p>
+            </div>
+            <div class="card">
+                <form id="slt-login-form">
+                    <div class="form-group">
+                        <label for="slt-username">Username:</label>
+                        <input type="text" id="slt-username" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="slt-password">Password:</label>
+                        <input type="password" id="slt-password" required>
+                    </div>
+                    <button type="submit" class="btn">Login</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- SLT Dashboard -->
+        <div id="slt-dashboard" class="page">
+            <div class="hero">
+                <h1>SLT Dashboard</h1>
+                <p id="slt-welcome">Welcome to the Senior Leadership Panel</p>
+            </div>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem;">
+                <button class="btn" onclick="showSLTSection('staff-desktops')">Staff Desktops</button>
+                <button class="btn" onclick="showSLTSection('support-tickets')">Support Tickets</button>
+                <button class="btn" onclick="showSLTSection('announcements')">Send Announcements</button>
+                <button class="btn" onclick="showSLTSection('events')">Manage Events</button>
+                <button class="btn" onclick="showSLTSection('curriculum-upload')">Upload Curriculum</button>
+            </div>
+            <div id="slt-content" class="card" style="margin-top: 2rem;">
+                <!-- Dynamic SLT content -->
+            </div>
+        </div>
+
+        <!-- News Page -->
+        <div id="news" class="page">
+            <div class="hero">
+                <h1>Latest News & Events</h1>
+                <p>Stay updated with school happenings</p>
+            </div>
+            <div id="news-content">
+                <!-- News and events will be populated here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Modals -->
+    <div id="add-image-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('add-image-modal')">&times;</span>
+            <h2>Add New Gallery Image</h2>
+            <form id="add-image-form">
+                <div class="form-group">
+                    <label for="image-title">Event Title:</label>
+                    <input type="text" id="image-title" required>
+                </div>
+                <div class="form-group">
+                    <label for="image-upload">Select Image:</label>
+                    <input type="file" id="image-upload" accept="image/*" required>
+                </div>
+                <button type="submit" class="btn">Add Image</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="ticket-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('ticket-modal')">&times;</span>
+            <h2>Create Support Ticket</h2>
+            <form id="ticket-form">
+                <div class="form-group">
+                    <label for="ticket-subject">Subject:</label>
+                    <input type="text" id="ticket-subject" required>
+                </div>
+                <div class="form-group">
+                    <label for="ticket-message">Message:</label>
+                    <textarea id="ticket-message" rows="4" required></textarea>
+                </div>
+                <button type="submit" class="btn">Create Ticket</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Global data storage
+        let globalData = {
+            staff: [],
+            gallery: [],
+            supportUsers: [],
+            supportTickets: [],
+            students: [],
+            events: [],
+            staffCredentials: [
+                {username: 'benjamin.day@hiltopprimary.com', password: 'BenjaminDayIsMyBea!', name: 'Benjamin Day', role: 'Chair of Governors'},
+                {username: 'william.oyston@hiltopprimary.com', password: 'WilliamIsCool', name: 'William Oyston', role: 'Governing Body'},
+                {username: 'chaine.louise-rose@hiltopprimary.com', password: 'ChaineLouseIsMyselfOfc', name: 'Chaine Louse-Rose', role: 'Governing Body'},
+                {username: 'victoria.meepstead@hiltopprimary.com', password: 'BillyBobJohn!', name: 'Victoria Meepstead', role: 'Headteacher'},
+                {username: 'jake.adnsrews@hiltopprimary.com', password: 'Andrews_Of_The_Jake', name: 'Jake Andrews', role: 'Deputy Headteacher'},
+                {username: 'julian.karel@hiltopprimary.com', password: 'GraysAnatomyMyself25', name: 'Julian Karel', role: 'Assistant Headteacher'},
+                {username: 'vacant@hiltopprimary.com', password: 'WilliamIsCool', name: 'Vacant Class', role: 'Assistant Headteacher'},
+                {username: 'owen.martinez@hiltopprimary.com', password: 'OwenMartinez@hiltopprimary.com', name: 'Owen Martinez', role: 'Associate Senior Leader'},
+                {username: 'hybridz.dynamics@hiltopprimary.com', password: 'HybridsCommunityDynamics', name: 'Hybridz Dynamics', role: 'Head of Department'},
+                {username: 'vacant@hiltopprimary.com', password: 'WilliamIsCool', name: 'Vacant', role: 'Teacher'},
+                {username: 'vacant@hiltopprimary.com', password: 'WilliamIsCool', name: 'Vacant', role: 'Teacher'},
+                {username: 'vacant@hiltopprimary.com', password: 'WilliamIsCool', name: 'Vacant', role: 'Teacher'},
+                {username: 'vacant@hiltopprimary.com', password: 'WilliamIsCool', name: 'Vacant', role: 'Teacher'},
+                {username: 'vacant@hiltopprimary.com', password: 'WilliamIsCool', name: 'Vacant', role: 'Teacher'},
+                {username: 'vacant@hiltopprimary.com', password: 'WilliamIsCool', name: 'Vacant', role: 'Teacher'},
+                {username: 'vacant@hiltopprimary.com', password: 'WilliamIsCool', name: 'Vacant', role: 'Teacher'},
+                {username: 'vacant@hiltopprimary.com', password: 'WilliamIsCool', name: 'Vacant', role: 'Teacher'},
+                {username: 'vacant@hiltopprimary.com', password: 'WilliamIsCool', name: 'Vacant', role: 'Assisting Teacher'},
+                {username: 'vacant@hiltopprimary.com', password: 'WilliamIsCool', name: 'Vacant', role: 'Assisting Teacher'},
+                {username: 'vacant@hiltopprimary.com', password: 'WilliamIsCool', name: 'Vacant', role: 'Assisting Teacher'},
+                {username: 'vacant@hiltopprimary.com', password: 'WilliamIsCool', name: 'Vacant', role: 'Assisting Teacher'},
+                {username: 'vacant@hiltopprimary.com', password: 'WilliamIsCool', name: 'Vacant', role: 'Assisting Teacher'},
+                {username: 'vacant@hiltopprimary.com', password: 'WilliamIsCool', name: 'Vacant', role: 'Assisting Teacher'},
+                {username: 'vacant@hiltopprimary.com', password: 'WilliamIsCool', name: 'Vacant', role: 'Assisting Assistant'},
+                {username: 'vacant@hiltopprimary.com', password: 'WilliamIsCool', name: 'Ronald Scott', role: 'Assisting'},
+                {username: 'vacant@hiltopprimary.com', password: 'WilliamIsCool', name: 'Vacant', role: 'Assisting Teacher'},
+                {username: 'vacant@hiltopprimary.com', password: 'WilliamIsCool', name: 'Vacant', role: 'Assisting Teacher'},
+                {username: 'vacant@hiltopprimary.com', password: 'WilliamIsCool', name: 'Vacant', role: 'Assisting Teacher'},
+                {username: 'vacant@hiltopprimary.com', password: 'WilliamIsCool', name: 'Vacant', role: 'Maintenance Staff'},
+                {username: 'vacant@hiltopprimary.com', password: 'WilliamIsCool', name: 'Vacant', role: 'Maintenance Staff'},
+                {username: 'vacant@hiltopprimary.com', password: 'WilliamIsCool', name: 'Vacant', role: 'Nurse'},
+                {username: 'vacant@hiltopprimary.com', password: 'WilliamIsCool', name: 'Vacant', role: 'IT Support'},
+                {username: 'vacant@hiltopprimary.com', password: 'WilliamIsCool', name: 'Vacant', role: 'Janitor'},
+                {username: 'vacant@hiltopprimary.com', password: 'WilliamIsCool', name: 'Vacant', role: 'Kitchen Staff'},
+                {username: 'vacant@hiltopprimary.com', password: 'WilliamIsCool', name: 'Vacant', role: 'Substitute Staff'}
+            ],
+            sltCredentials: [
+                {username: 'benjamin.day@hiltopprimary.com', password: 'BenjaminDayIsMyBea!', name: 'Benjamin Day', role: 'Chair of Governors'},
+                {username: 'william.oyston@hiltopprimary.com', password: 'WilliamIsCool', name: 'William Oyston', role: 'Governing Body'},
+                {username: 'chaine.louise-rose@hiltopprimary.com', password: 'ChaineLouseIsMyselfOfc', name: 'Chaine Louse-Rose', role: 'Governing Body'},
+                {username: 'victoria.meepstead@hiltopprimary.com', password: 'BillyBobJohn!', name: 'Victoria Meepstead', role: 'Headteacher'},
+                {username: 'jake.adnsrews@hiltopprimary.com', password: 'Andrews_Of_The_Jake', name: 'Jake Andrews', role: 'Deputy Headteacher'},
+                {username: 'julian.karel@hiltopprimary.com', password: 'GraysAnatomyMyself25', name: 'Julian Karel', role: 'Assistant Headteacher'},
+                {username: 'vacant@hiltopprimary.com', password: 'WilliamIsCool', name: 'Vacant Class', role: 'Assistant Headteacher'},
+                {username: 'owen.martinez@hiltopprimary.com', password: 'OwenMartinez@hiltopprimary.com', name: 'Owen Martinez', role: 'Associate Senior Leader'},
+
+            ],
+            currentUser: null,
+            currentStaff: null,
+            currentSLT: null,
+            notebooks: {},
+            curriculums: [],
+            timetables: {},
+            behaviour: [],
+            safeguarding: [],
+            firstAid: []
+        };
+
+        // Load data from localStorage if available
+        function loadGlobalData() {
+            const saved = localStorage.getItem('schoolWebsiteData');
+            if (saved) {
+                const parsed = JSON.parse(saved);
+                globalData = {...globalData, ...parsed};
+            }
+        }
+
+        // Save data to localStorage
+        function saveGlobalData() {
+            localStorage.setItem('schoolWebsiteData', JSON.stringify(globalData));
+        }
+
+        // Initialize data on page load
+        loadGlobalData();
+
+        // Webhook functions
+        async function sendToDiscord(webhookUrl, data) {
+            try {
+                await fetch(webhookUrl, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data)
+                });
+            } catch (error) {
+                console.error('Error sending to Discord:', error);
+            }
+        }
+
+        // Navigation
+        function showPage(pageId) {
+            const pages = document.querySelectorAll('.page');
+            pages.forEach(page => page.classList.remove('active'));
+            document.getElementById(pageId).classList.add('active');
+        }
+
+        // Modal functions
+        function openModal(modalId) {
+            document.getElementById(modalId).style.display = 'block';
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+        }
+
+        // Initialize pages
+        function initializeHomePage() {
+            const featuredStaff = document.getElementById('featured-staff');
+            const featured = globalData.staffCredentials.slice(0, 4);
+            
+            featuredStaff.innerHTML = featured.map(staff => `
+                <div class="card staff-card">
+                    <h3>${staff.name}</h3>
+                    <p>${staff.role}</p>
+                    <div class="status-online">● Online</div>
+                </div>
+            `).join('');
+        }
+
+        function initializeStaffPage() {
+            const allStaff = document.getElementById('all-staff');
+            allStaff.innerHTML = globalData.staffCredentials.map(staff => `
+                <div class="card staff-card">
+                    <h3>${staff.name}</h3>
+                    <p>${staff.role}</p>
+                    <div class="${Math.random() > 0.5 ? 'status-online' : 'status-offline'}">
+                        ● ${Math.random() > 0.5 ? 'Online' : 'Offline'}
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function initializeGalleryPage() {
+            const galleryGrid = document.getElementById('gallery-grid');
+            galleryGrid.innerHTML = globalData.gallery.map((item, index) => `
+                <div class="card">
+                    <img src="${item.image}" alt="${item.title}" style="width: 100%; height: 200px; object-fit: cover; border-radius: 10px;">
+                    <h3>${item.title}</h3>
+                    <button class="btn" onclick="removeGalleryItem(${index})" style="margin-top: 1rem;">Remove</button>
+                </div>
+            `).join('');
+        }
+
+        function initializeNewsPage() {
+            const newsContent = document.getElementById('news-content');
+            newsContent.innerHTML = globalData.events.map(event => `
+                <div class="event-card">
+                    <h3>${event.name}</h3>
+                    <p><strong>Date:</strong> ${event.date}</p>
+                    <p><strong>Time:</strong> ${event.time}</p>
+                    <p><strong>Location:</strong> ${event.location}</p>
+                    <p>${event.description}</p>
+                </div>
+            `).join('');
+        }
+
+        // Application form handler
+        document.getElementById('application-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const formData = {
+                embeds: [{
+                    title: "New Staff Application",
+                    color: 0x2196F3,
+                    fields: [
+                        {
+                            name: "Discord Username",
+                            value: document.getElementById('discord-user').value,
+                            inline: true
+                        },
+                        {
+                            name: "Role Applying For",
+                            value: document.getElementById('role-applying').value,
+                            inline: true
+                        },
+                        {
+                            name: "Why should we choose you?",
+                            value: document.getElementById('why-choose').value
+                        },
+                        {
+                            name: "What makes you different?",
+                            value: document.getElementById('what-different').value
+                        },
+                        {
+                            name: "Experience",
+                            value: document.getElementById('experience').value
+                        }
+                    ],
+                    timestamp: new Date().toISOString()
+                }]
+            };
+
+            await sendToDiscord('https://discord.com/api/webhooks/1419762893347360819/w_0WDl1J6ql5S3vlByRJTmFLlyJLPQNvir766e5K8gzfyvZORFbHAUHiXrHpjy1eozu-', formData);
+            
+            alert('Application submitted successfully!');
+            document.getElementById('application-form').reset();
+        });
+
+        // Support system
+        function showSupportRegister() {
+            document.getElementById('support-login').style.display = 'none';
+            document.getElementById('support-register').style.display = 'block';
+        }
+
+        function showSupportLogin() {
+            document.getElementById('support-register').style.display = 'none';
+            document.getElementById('support-login').style.display = 'block';
+        }
+
+        document.getElementById('support-register-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const username = document.getElementById('new-support-username').value;
+            const password = document.getElementById('new-support-password').value;
+            
+            globalData.supportUsers.push({ username, password, tickets: [] });
+            saveGlobalData();
+            
+            alert('Account created successfully!');
+            showSupportLogin();
+        });
+
+        document.getElementById('support-login-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const username = document.getElementById('support-username').value;
+            const password = document.getElementById('support-password').value;
+            
+            const user = globalData.supportUsers.find(u => u.username === username && u.password === password);
+            if (user) {
+                globalData.currentUser = user;
+                document.getElementById('support-login').style.display = 'none';
+                document.getElementById('support-dashboard').style.display = 'block';
+                loadUserTickets();
+            } else {
+                alert('Invalid credentials!');
+            }
+        });
+
+        function loadUserTickets() {
+            const ticketsDiv = document.getElementById('user-tickets');
+            const userTickets = globalData.supportTickets.filter(ticket => 
+                ticket.username === globalData.currentUser.username
+            );
+            
+            ticketsDiv.innerHTML = userTickets.map(ticket => `
+                <div class="support-ticket">
+                    <h4>Ticket #${ticket.id}</h4>
+                    <p><strong>Subject:</strong> ${ticket.subject}</p>
+                    <p><strong>Status:</strong> ${ticket.status}</p>
+                    <div class="ticket-messages">
+                        ${ticket.messages.map(msg => `
+                            <div style="margin: 0.5rem 0; padding: 0.5rem; background: rgba(255,255,255,0.1); border-radius: 5px;">
+                                <strong>${msg.sender}:</strong> ${msg.message}
+                                <small style="float: right;">${msg.timestamp}</small>
+                            </div>
+                        `).join('')}
+                    </div>
+                    ${ticket.status === 'open' ? `
+                        <div style="margin-top: 1rem;">
+                            <input type="text" id="reply-${ticket.id}" placeholder="Type your reply..." style="width: 70%; margin-right: 1rem;">
+                            <button class="btn" onclick="replyToTicket(${ticket.id})">Reply</button>
+                        </div>
+                    ` : ''}
+                </div>
+            `).join('');
+        }
+
+        function createNewTicket() {
+            openModal('ticket-modal');
+        }
+
+        document.getElementById('ticket-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const subject = document.getElementById('ticket-subject').value;
+            const message = document.getElementById('ticket-message').value;
+            
+            const ticketId = Date.now();
+            const ticket = {
+                id: ticketId,
+                username: globalData.currentUser.username,
+                subject,
+                status: 'open',
+                messages: [{
+                    sender: globalData.currentUser.username,
+                    message,
+                    timestamp: new Date().toLocaleString()
+                }]
+            };
+            
+            globalData.supportTickets.push(ticket);
+            saveGlobalData();
+            
+            closeModal('ticket-modal');
+            loadUserTickets();
+            document.getElementById('ticket-form').reset();
+        });
+
+        function replyToTicket(ticketId) {
+            const replyInput = document.getElementById(`reply-${ticketId}`);
+            const message = replyInput.value.trim();
+            
+            if (message) {
+                const ticket = globalData.supportTickets.find(t => t.id === ticketId);
+                ticket.messages.push({
+                    sender: globalData.currentUser.username,
+                    message,
+                    timestamp: new Date().toLocaleString()
+                });
+                
+                saveGlobalData();
+                loadUserTickets();
+            }
+        }
+
+        // Staff login system
+        document.getElementById('staff-login-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const username = document.getElementById('staff-username').value;
+            const password = document.getElementById('staff-password').value;
+            
+            const staff = globalData.staffCredentials.find(s => s.username === username && s.password === password);
+            if (staff) {
+                globalData.currentStaff = staff;
+                document.getElementById('staff-welcome').textContent = `Welcome back, ${staff.name}!`;
+                showPage('staff-dashboard');
+            } else {
+                alert('Invalid staff credentials!');
+            }
+        });
+
+        function showStaffSection(section) {
+            const content = document.getElementById('staff-content');
+            
+            switch(section) {
+                case 'curriculum':
+                    content.innerHTML = `
+                        <h3>Curriculum Resources</h3>
+                        <div id="curriculum-list">
+                            ${globalData.curriculums.map(curr => `
+                                <div class="card">
+                                    <h4>${curr.title}</h4>
+                                    <p>${curr.description}</p>
+                                    <a href="${curr.file}" target="_blank" class="btn">Download</a>
+                                </div>
+                            `).join('')}
+                        </div>
+                    `;
+                    break;
+                    
+                case 'students':
+                    showStudentManagement();
+                    break;
+                    
+                case 'safeguarding':
+                    content.innerHTML = `
+                        <h3>Safeguarding Reports</h3>
+                        <form id="safeguarding-form">
+                            <div class="form-group">
+                                <label>Year Group:</label>
+                                <select id="safeguarding-year" required>
+                                    <option value="">Select Year</option>
+                                    <option value="Year 1">Year 1</option>
+                                    <option value="Year 2">Year 2</option>
+                                    <option value="Year 3">Year 3</option>
+                                    <option value="Year 4">Year 4</option>
+                                    <option value="Year 5">Year 5</option>
+                                    <option value="Year 6">Year 6</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Student Name:</label>
+                                <input type="text" id="safeguarding-student" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Report Details:</label>
+                                <textarea id="safeguarding-details" rows="4" required></textarea>
+                            </div>
+                            <button type="submit" class="btn">Submit Safeguarding Report</button>
+                        </form>
+                    `;
+                    
+                    document.getElementById('safeguarding-form').addEventListener('submit', async (e) => {
+                        e.preventDefault();
+                        
+                        const reportData = {
+                            embeds: [{
+                                title: "🛡️ Safeguarding Report",
+                                color: 0xFF4444,
+                                fields: [
+                                    {
+                                        name: "Year Group",
+                                        value: document.getElementById('safeguarding-year').value,
+                                        inline: true
+                                    },
+                                    {
+                                        name: "Student Name",
+                                        value: document.getElementById('safeguarding-student').value,
+                                        inline: true
+                                    },
+                                    {
+                                        name: "Reported By",
+                                        value: globalData.currentStaff.name,
+                                        inline: true
+                                    },
+                                    {
+                                        name: "Report Details",
+                                        value: document.getElementById('safeguarding-details').value
+                                    }
+                                ],
+                                timestamp: new Date().toISOString()
+                            }]
+                        };
+
+                        await sendToDiscord('https://discord.com/api/webhooks/1417955269060595852/Ge1FROOVHNQJ55URS5i3qONU6mvwpjeOdxuGCu9vWn5jy3cKxZrVxGrO3WurTEchyOsd', reportData);
+                        
+                        const report = {
+                            year: document.getElementById('safeguarding-year').value,
+                            student: document.getElementById('safeguarding-student').value,
+                            details: document.getElementById('safeguarding-details').value,
+                            staff: globalData.currentStaff.name,
+                            timestamp: new Date().toLocaleString()
+                        };
+                        
+                        globalData.safeguarding.push(report);
+                        saveGlobalData();
+                        
+                        alert('Safeguarding report submitted successfully!');
+                        document.getElementById('safeguarding-form').reset();
+                    });
+                    break;
+                    
+                case 'first-aid':
+                    content.innerHTML = `
+                        <h3>First Aid Reports</h3>
+                        <form id="first-aid-form">
+                            <div class="form-group">
+                                <label>Year Group:</label>
+                                <select id="first-aid-year" required>
+                                    <option value="">Select Year</option>
+                                    <option value="Year 1">Year 1</option>
+                                    <option value="Year 2">Year 2</option>
+                                    <option value="Year 3">Year 3</option>
+                                    <option value="Year 4">Year 4</option>
+                                    <option value="Year 5">Year 5</option>
+                                    <option value="Year 6">Year 6</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Student Name:</label>
+                                <input type="text" id="first-aid-student" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Incident Details:</label>
+                                <textarea id="first-aid-details" rows="4" required></textarea>
+                            </div>
+                            <button type="submit" class="btn">Submit First Aid Report</button>
+                        </form>
+                    `;
+                    
+                    document.getElementById('first-aid-form').addEventListener('submit', async (e) => {
+                        e.preventDefault();
+                        
+                        const reportData = {
+                            embeds: [{
+                                title: "🏥 First Aid Report",
+                                color: 0x00FF00,
+                                fields: [
+                                    {
+                                        name: "Year Group",
+                                        value: document.getElementById('first-aid-year').value,
+                                        inline: true
+                                    },
+                                    {
+                                        name: "Student Name",
+                                        value: document.getElementById('first-aid-student').value,
+                                        inline: true
+                                    },
+                                    {
+                                        name: "Reported By",
+                                        value: globalData.currentStaff.name,
+                                        inline: true
+                                    },
+                                    {
+                                        name: "Incident Details",
+                                        value: document.getElementById('first-aid-details').value
+                                    }
+                                ],
+                                timestamp: new Date().toISOString()
+                            }]
+                        };
+
+                        await sendToDiscord('https://discord.com/api/webhooks/1417955479401009394/AbSDvjQhB58tlrS_K9cSWvcfvEMTXfEs0Hq-F13pL2lYjtAuRklmxCa1fiCCTVsLPM_c', reportData);
+                        
+                        const report = {
+                            year: document.getElementById('first-aid-year').value,
+                            student: document.getElementById('first-aid-student').value,
+                            details: document.getElementById('first-aid-details').value,
+                            staff: globalData.currentStaff.name,
+                            timestamp: new Date().toLocaleString()
+                        };
+                        
+                        globalData.firstAid.push(report);
+                        saveGlobalData();
+                        
+                        alert('First aid report submitted successfully!');
+                        document.getElementById('first-aid-form').reset();
+                    });
+                    break;
+                    
+                case 'behaviour':
+                    content.innerHTML = `
+                        <h3>Behaviour Management</h3>
+                        <form id="behaviour-form">
+                            <div class="form-group">
+                                <label>Year Group:</label>
+                                <select id="behaviour-year" required>
+                                    <option value="">Select Year</option>
+                                    <option value="Year 1">Year 1</option>
+                                    <option value="Year 2">Year 2</option>
+                                    <option value="Year 3">Year 3</option>
+                                    <option value="Year 4">Year 4</option>
+                                    <option value="Year 5">Year 5</option>
+                                    <option value="Year 6">Year 6</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Student Name:</label>
+                                <input type="text" id="behaviour-student" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Behaviour Type:</label>
+                                <select id="behaviour-type" required>
+                                    <option value="">Select Type</option>
+                                    <option value="Positive">Positive</option>
+                                    <option value="Negative">Negative</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Details:</label>
+                                <textarea id="behaviour-details" rows="3" required></textarea>
+                            </div>
+                            <button type="submit" class="btn">Log Behaviour</button>
+                        </form>
+                        <div style="margin-top: 2rem;">
+                            <h4>Recent Behaviour Logs</h4>
+                            <div id="behaviour-history">
+                                ${globalData.behaviour.map(b => `
+                                    <div class="card">
+                                        <strong>${b.student}</strong> (${b.year}) - ${b.type}
+                                        <p>${b.details}</p>
+                                        <small>Logged by ${b.staff} on ${b.timestamp}</small>
+                                    </div>
+                                `).join('')}
+                            </div>
+                        </div>
+                    `;
+                    
+                    document.getElementById('behaviour-form').addEventListener('submit', async (e) => {
+                        e.preventDefault();
+                        
+                        const behaviourData = {
+                            embeds: [{
+                                title: "📝 Behaviour Log",
+                                color: document.getElementById('behaviour-type').value === 'Positive' ? 0x00FF00 : 0xFF4444,
+                                fields: [
+                                    {
+                                        name: "Year Group",
+                                        value: document.getElementById('behaviour-year').value,
+                                        inline: true
+                                    },
+                                    {
+                                        name: "Student Name",
+                                        value: document.getElementById('behaviour-student').value,
+                                        inline: true
+                                    },
+                                    {
+                                        name: "Type",
+                                        value: document.getElementById('behaviour-type').value,
+                                        inline: true
+                                    },
+                                    {
+                                        name: "Details",
+                                        value: document.getElementById('behaviour-details').value
+                                    },
+                                    {
+                                        name: "Logged By",
+                                        value: globalData.currentStaff.name,
+                                        inline: true
+                                    }
+                                ],
+                                timestamp: new Date().toISOString()
+                            }]
+                        };
+
+                        await sendToDiscord('https://discord.com/api/webhooks/1419372622021660804/Kad6axT4R2HakTiES56KMySrx0CwuyZwGgGusmh4qG521q_ggWctgJlfPpKISrN3vt5q', behaviourData);
+                        
+                        const log = {
+                            year: document.getElementById('behaviour-year').value,
+                            student: document.getElementById('behaviour-student').value,
+                            type: document.getElementById('behaviour-type').value,
+                            details: document.getElementById('behaviour-details').value,
+                            staff: globalData.currentStaff.name,
+                            timestamp: new Date().toLocaleString()
+                        };
+                        
+                        globalData.behaviour.push(log);
+                        saveGlobalData();
+                        
+                        alert('Behaviour logged successfully!');
+                        showStaffSection('behaviour'); // Refresh the view
+                    });
+                    break;
+                    
+                case 'notebook':
+                    const currentNotebook = globalData.notebooks[globalData.currentStaff.username] || '';
+                    content.innerHTML = `
+                        <h3>My Notebook</h3>
+                        <textarea id="staff-notebook" class="notebook" rows="15" placeholder="Write your notes here...">${currentNotebook}</textarea>
+                        <button class="btn" onclick="saveNotebook()" style="margin-top: 1rem;">Save Notes</button>
+                    `;
+                    
+                    // Auto-save every 30 seconds
+                    setInterval(() => {
+                        const notebook = document.getElementById('staff-notebook');
+                        if (notebook) {
+                            globalData.notebooks[globalData.currentStaff.username] = notebook.value;
+                            saveGlobalData();
+                        }
+                    }, 30000);
+                    break;
+            }
+        }
+
+        function saveNotebook() {
+            const notebook = document.getElementById('staff-notebook').value;
+            globalData.notebooks[globalData.currentStaff.username] = notebook;
+            saveGlobalData();
+            alert('Notes saved successfully!');
+        }
+
+        function showStudentManagement() {
+            const content = document.getElementById('staff-content');
+            content.innerHTML = `
+                <h3>Student Management</h3>
+                <div style="margin-bottom: 2rem;">
+                    <button class="btn" onclick="addNewStudent()">Add New Student</button>
+                </div>
+                <div id="students-list">
+                    ${globalData.students.map((student, index) => `
+                        <div class="card">
+                            <h4>${student.name} (${student.year})</h4>
+                            <button class="btn" onclick="editStudentTimetable(${index})">Edit Timetable</button>
+                            <button class="btn" onclick="removeStudent(${index})">Remove Student</button>
+                        </div>
+                    `).join('')}
+                </div>
+            `;
+        }
+
+        function addNewStudent() {
+            const name = prompt('Enter student name:');
+            const year = prompt('Enter year group (e.g., Year 1):');
+            
+            if (name && year) {
+                const student = {
+                    name,
+                    year,
+                    timetable: createEmptyTimetable()
+                };
+                globalData.students.push(student);
+                saveGlobalData();
+                showStudentManagement();
+            }
+        }
+
+        function createEmptyTimetable() {
+            const periods = ['Form', 'Period 1', 'Period 2', 'Break', 'Period 3', 'Lunch', 'Period 4', 'Period 5'];
+            const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+            const timetable = {};
+            
+            days.forEach(day => {
+                timetable[day] = {};
+                periods.forEach(period => {
+                    timetable[day][period] = '';
+                });
+            });
+            
+            return timetable;
+        }
+
+        function editStudentTimetable(studentIndex) {
+            const student = globalData.students[studentIndex];
+            const periods = ['Form', 'Period 1', 'Period 2', 'Break', 'Period 3', 'Lunch', 'Period 4', 'Period 5'];
+            const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+            
+            const content = document.getElementById('staff-content');
+            content.innerHTML = `
+                <h3>Edit Timetable for ${student.name}</h3>
+                <div class="timetable">
+                    <div class="timetable-cell timetable-header">Period/Day</div>
+                    ${days.map(day => `<div class="timetable-cell timetable-header">${day}</div>`).join('')}
+                    ${periods.map(period => `
+                        <div class="timetable-cell timetable-header">${period}</div>
+                        ${days.map(day => `
+                            <div class="timetable-cell">
+                                <input type="text" value="${student.timetable[day][period]}" 
+                                       onchange="updateTimetableCell(${studentIndex}, '${day}', '${period}', this.value)"
+                                       style="width: 100%; border: none; background: transparent; text-align: center;">
+                            </div>
+                        `).join('')}
+                    `).join('')}
+                </div>
+                <button class="btn" onclick="showStudentManagement()" style="margin-top: 1rem;">Back to Students</button>
+            `;
+        }
+
+        function updateTimetableCell(studentIndex, day, period, value) {
+            globalData.students[studentIndex].timetable[day][period] = value;
+            saveGlobalData();
+        }
+
+        function removeStudent(studentIndex) {
+            if (confirm('Are you sure you want to remove this student?')) {
+                globalData.students.splice(studentIndex, 1);
+                saveGlobalData();
+                showStudentManagement();
+            }
+        }
+
+        // SLT login system
+        document.getElementById('slt-login-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const username = document.getElementById('slt-username').value;
+            const password = document.getElementById('slt-password').value;
+            
+            const slt = globalData.sltCredentials.find(s => s.username === username && s.password === password);
+            if (slt) {
+                globalData.currentSLT = slt;
+                document.getElementById('slt-welcome').textContent = `Welcome, ${slt.name}!`;
+                showPage('slt-dashboard');
+            } else {
+                alert('Invalid SLT credentials!');
+            }
+        });
+
+        function showSLTSection(section) {
+            const content = document.getElementById('slt-content');
+            
+            switch(section) {
+                case 'staff-desktops':
+                    content.innerHTML = `
+                        <h3>Staff Desktop Management</h3>
+                        <div class="staff-grid">
+                            ${globalData.staffCredentials.map((staff, index) => `
+                                <div class="card">
+                                    <h4>${staff.name}</h4>
+                                    <p>${staff.role}</p>
+                                    <button class="btn" onclick="viewStaffTimetable('${staff.username}')">View Timetable</button>
+                                    <button class="btn" onclick="viewStaffNotebook('${staff.username}')">View Notebook</button>
+                                </div>
+                            `).join('')}
+                        </div>
+                    `;
+                    break;
+                    
+                case 'support-tickets':
+                    content.innerHTML = `
+                        <h3>Support Ticket Management</h3>
+                        <div id="slt-tickets">
+                            ${globalData.supportTickets.map(ticket => `
+                                <div class="support-ticket">
+                                    <h4>Ticket #${ticket.id} - ${ticket.username}</h4>
+                                    <p><strong>Subject:</strong> ${ticket.subject}</p>
+                                    <p><strong>Status:</strong> ${ticket.status}</p>
+                                    <div class="ticket-messages">
+                                        ${ticket.messages.map(msg => `
+                                            <div style="margin: 0.5rem 0; padding: 0.5rem; background: rgba(255,255,255,0.1); border-radius: 5px;">
+                                                <strong>${msg.sender}:</strong> ${msg.message}
+                                                <small style="float: right;">${msg.timestamp}</small>
+                                            </div>
+                                        `).join('')}
+                                    </div>
+                                    ${ticket.status === 'open' ? `
+                                        <div style="margin-top: 1rem;">
+                                            <input type="text" id="slt-reply-${ticket.id}" placeholder="Type your reply..." style="width: 60%; margin-right: 1rem;">
+                                            <button class="btn" onclick="sltReplyToTicket(${ticket.id})">Reply</button>
+                                            <button class="btn" onclick="closeTicket(${ticket.id})">Close Ticket</button>
+                                        </div>
+                                    ` : ''}
+                                </div>
+                            `).join('')}
+                        </div>
+                    `;
+                    break;
+                    
+                case 'announcements':
+                    content.innerHTML = `
+                        <h3>Send Year Group Announcements</h3>
+                        <form id="announcement-form">
+                            <div class="form-group">
+                                <label>Year Group:</label>
+                                <select id="announcement-year" required>
+                                    <option value="">Select Year Group</option>
+                                    <option value="Year 1" data-role="1416104366188007585">Year 1</option>
+                                    <option value="Year 2" data-role="1416104365223051535">Year 2</option>
+                                    <option value="Year 3" data-role="1416104363654516867">Year 3</option>
+                                    <option value="Year 4" data-role="1416104362731900989">Year 4</option>
+                                    <option value="Year 5" data-role="1416104361591050373">Year 5</option>
+                                    <option value="Year 6" data-role="1416104359946748048">Year 6</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Announcement Title:</label>
+                                <input type="text" id="announcement-title" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Announcement Description:</label>
+                                <textarea id="announcement-description" rows="4" required></textarea>
+                            </div>
+                            <button type="submit" class="btn">Send Announcement</button>
+                        </form>
+                    `;
+                    
+                    document.getElementById('announcement-form').addEventListener('submit', async (e) => {
+                        e.preventDefault();
+                        
+                        const yearSelect = document.getElementById('announcement-year');
+                        const yearGroup = yearSelect.value;
+                        const roleId = yearSelect.options[yearSelect.selectedIndex].getAttribute('data-role');
+                        const title = document.getElementById('announcement-title').value;
+                        const description = document.getElementById('announcement-description').value;
+                        
+                        const announcementData = {
+                            content: `<@&${roleId}>`,
+                            embeds: [{
+                                title: `📢 ${title}`,
+                                description: description,
+                                color: 0x2196F3,
+                                fields: [
+                                    {
+                                        name: "Year Group",
+                                        value: yearGroup,
+                                        inline: true
+                                    },
+                                    {
+                                        name: "Sent By",
+                                        value: globalData.currentSLT.name,
+                                        inline: true
+                                    }
+                                ],
+                                timestamp: new Date().toISOString()
+                            }]
+                        };
+
+                        await sendToDiscord('https://discord.com/api/webhooks/1419371686595268739/Om4R75BBjoR3BDs58lMlz4PKVSudAuDXE4w4JcmsK_3_Z8nBpPqEoAZKkirFKzj7ZGgF', announcementData);
+                        
+                        alert('Announcement sent successfully!');
+                        document.getElementById('announcement-form').reset();
+                    });
+                    break;
+                    
+                case 'events':
+                    content.innerHTML = `
+                        <h3>Event Management</h3>
+                        <form id="event-form">
+                            <div class="form-group">
+                                <label>Event Name:</label>
+                                <input type="text" id="event-name" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Event Description:</label>
+                                <textarea id="event-description" rows="3" required></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label>Event Date:</label>
+                                <input type="date" id="event-date" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Event Time:</label>
+                                <input type="time" id="event-time" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Event Location:</label>
+                                <input type="text" id="event-location" required>
+                            </div>
+                            <button type="submit" class="btn">Create Event</button>
+                        </form>
+                        
+                        <div style="margin-top: 3rem;">
+                            <h4>Existing Events</h4>
+                            <div id="events-list">
+                                ${globalData.events.map((event, index) => `
+                                    <div class="event-card">
+                                        <h4>${event.name}</h4>
+                                        <p><strong>Date:</strong> ${event.date} at ${event.time}</p>
+                                        <p><strong>Location:</strong> ${event.location}</p>
+                                        <p>${event.description}</p>
+                                        <button class="btn" onclick="removeEvent(${index})">Remove Event</button>
+                                    </div>
+                                `).join('')}
+                            </div>
+                        </div>
+                    `;
+                    
+                    document.getElementById('event-form').addEventListener('submit', (e) => {
+                        e.preventDefault();
+                        
+                        const event = {
+                            name: document.getElementById('event-name').value,
+                            description: document.getElementById('event-description').value,
+                            date: document.getElementById('event-date').value,
+                            time: document.getElementById('event-time').value,
+                            location: document.getElementById('event-location').value,
+                            createdBy: globalData.currentSLT.name,
+                            createdAt: new Date().toLocaleString()
+                        };
+                        
+                        globalData.events.push(event);
+                        saveGlobalData();
+                        
+                        alert('Event created successfully!');
+                        showSLTSection('events'); // Refresh the view
+                        initializeNewsPage(); // Update news page
+                    });
+                    break;
+                    
+                case 'curriculum-upload':
+                    content.innerHTML = `
+                        <h3>Curriculum Upload</h3>
+                        <form id="curriculum-form">
+                            <div class="form-group">
+                                <label>Curriculum Title:</label>
+                                <input type="text" id="curriculum-title" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Description:</label>
+                                <textarea id="curriculum-description" rows="3" required></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label>Upload File:</label>
+                                <input type="file" id="curriculum-file" accept=".pdf,.doc,.docx" required>
+                            </div>
+                            <button type="submit" class="btn">Upload Curriculum</button>
+                        </form>
+                        
+                        <div style="margin-top: 3rem;">
+                            <h4>Uploaded Curriculums</h4>
+                            <div id="curriculum-list">
+                                ${globalData.curriculums.map((curr, index) => `
+                                    <div class="card">
+                                        <h4>${curr.title}</h4>
+                                        <p>${curr.description}</p>
+                                        <p><small>Uploaded by ${curr.uploadedBy} on ${curr.uploadedAt}</small></p>
+                                        <button class="btn" onclick="removeCurriculum(${index})">Remove</button>
+                                    </div>
+                                `).join('')}
+                            </div>
+                        </div>
+                    `;
+                    
+                    document.getElementById('curriculum-form').addEventListener('submit', (e) => {
+                        e.preventDefault();
+                        
+                        const fileInput = document.getElementById('curriculum-file');
+                        const file = fileInput.files[0];
+                        
+                        if (file) {
+                            const reader = new FileReader();
+                            reader.onload = function(e) {
+                                const curriculum = {
+                                    title: document.getElementById('curriculum-title').value,
+                                    description: document.getElementById('curriculum-description').value,
+                                    file: e.target.result,
+                                    fileName: file.name,
+                                    uploadedBy: globalData.currentSLT.name,
+                                    uploadedAt: new Date().toLocaleString()
+                                };
+                                
+                                globalData.curriculums.push(curriculum);
+                                saveGlobalData();
+                                
+                                alert('Curriculum uploaded successfully!');
+                                showSLTSection('curriculum-upload'); // Refresh the view
+                            };
+                            reader.readAsDataURL(file);
+                        }
+                    });
+                    break;
+            }
+        }
+
+        function viewStaffTimetable(staffUsername) {
+            const staff = globalData.staffCredentials.find(s => s.username === staffUsername);
+            const timetable = globalData.timetables[staffUsername] || createEmptyTimetable();
+            
+            const periods = ['Form', 'Period 1', 'Period 2', 'Break', 'Period 3', 'Lunch', 'Period 4', 'Period 5'];
+            const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+            
+            const content = document.getElementById('slt-content');
+            content.innerHTML = `
+                <h3>${staff.name}'s Timetable</h3>
+                <div class="timetable">
+                    <div class="timetable-cell timetable-header">Period/Day</div>
+                    ${days.map(day => `<div class="timetable-cell timetable-header">${day}</div>`).join('')}
+                    ${periods.map(period => `
+                        <div class="timetable-cell timetable-header">${period}</div>
+                        ${days.map(day => `
+                            <div class="timetable-cell">
+                                ${timetable[day] ? timetable[day][period] || '-' : '-'}
+                            </div>
+                        `).join('')}
+                    `).join('')}
+                </div>
+                <button class="btn" onclick="showSLTSection('staff-desktops')" style="margin-top: 1rem;">Back to Staff Desktops</button>
+            `;
+        }
+
+        function viewStaffNotebook(staffUsername) {
+            const staff = globalData.staffCredentials.find(s => s.username === staffUsername);
+            const notebook = globalData.notebooks[staffUsername] || 'No notes available.';
+            
+            const content = document.getElementById('slt-content');
+            content.innerHTML = `
+                <h3>${staff.name}'s Notebook</h3>
+                <div class="notebook" style="background: rgba(255,255,255,0.1); color: white; padding: 2rem; border-radius: 10px; min-height: 300px;">
+                    ${notebook.replace(/\n/g, '<br>')}
+                </div>
+                <button class="btn" onclick="showSLTSection('staff-desktops')" style="margin-top: 1rem;">Back to Staff Desktops</button>
+            `;
+            
+            // Auto-refresh every 5 seconds to show live edits
+            const refreshInterval = setInterval(() => {
+                const currentNotebook = globalData.notebooks[staffUsername] || 'No notes available.';
+                const notebookDiv = document.querySelector('.notebook');
+                if (notebookDiv && document.getElementById('slt-content').querySelector('.notebook')) {
+                    notebookDiv.innerHTML = currentNotebook.replace(/\n/g, '<br>');
+                } else {
+                    clearInterval(refreshInterval);
+                }
+            }, 5000);
+        }
+
+        function sltReplyToTicket(ticketId) {
+            const replyInput = document.getElementById(`slt-reply-${ticketId}`);
+            const message = replyInput.value.trim();
+            
+            if (message) {
+                const ticket = globalData.supportTickets.find(t => t.id === ticketId);
+                ticket.messages.push({
+                    sender: `SLT - ${globalData.currentSLT.name}`,
+                    message,
+                    timestamp: new Date().toLocaleString()
+                });
+                
+                saveGlobalData();
+                showSLTSection('support-tickets'); // Refresh the view
+            }
+        }
+
+        function closeTicket(ticketId) {
+            const ticket = globalData.supportTickets.find(t => t.id === ticketId);
+            ticket.status = 'closed';
+            ticket.messages.push({
+                sender: `SLT - ${globalData.currentSLT.name}`,
+                message: 'Ticket closed by SLT.',
+                timestamp: new Date().toLocaleString()
+            });
+            
+            saveGlobalData();
+            showSLTSection('support-tickets'); // Refresh the view
+        }
+
+        function removeEvent(index) {
+            if (confirm('Are you sure you want to remove this event?')) {
+                globalData.events.splice(index, 1);
+                saveGlobalData();
+                showSLTSection('events'); // Refresh the view
+                initializeNewsPage(); // Update news page
+            }
+        }
+
+        function removeCurriculum(index) {
+            if (confirm('Are you sure you want to remove this curriculum?')) {
+                globalData.curriculums.splice(index, 1);
+                saveGlobalData();
+                showSLTSection('curriculum-upload'); // Refresh the view
+            }
+        }
+
+        // Gallery functions
+        document.getElementById('add-image-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            const title = document.getElementById('image-title').value;
+            const fileInput = document.getElementById('image-upload');
+            const file = fileInput.files[0];
+            
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    globalData.gallery.push({
+                        title: title,
+                        image: e.target.result,
+                        uploadedAt: new Date().toLocaleString()
+                    });
+                    
+                    saveGlobalData();
+                    initializeGalleryPage();
+                    closeModal('add-image-modal');
+                    document.getElementById('add-image-form').reset();
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+
+        function removeGalleryItem(index) {
+            if (confirm('Are you sure you want to remove this image?')) {
+                globalData.gallery.splice(index, 1);
+                saveGlobalData();
+                initializeGalleryPage();
+            }
+        }
+
+        // Initialize default data
+        function initializeDefaultData() {
+            // Add some sample students if none exist
+            if (globalData.students.length === 0) {
+                globalData.students = [
+                    { name: 'John Doe', year: 'Year 1', timetable: createEmptyTimetable() },
+                    { name: 'Jane Smith', year: 'Year 2', timetable: createEmptyTimetable() },
+                    { name: 'Mike Johnson', year: 'Year 3', timetable: createEmptyTimetable() },
+                    { name: 'Sarah Wilson', year: 'Year 4', timetable: createEmptyTimetable() },
+                    { name: 'David Brown', year: 'Year 5', timetable: createEmptyTimetable() },
+                    { name: 'Emily Davis', year: 'Year 6', timetable: createEmptyTimetable() }
+                ];
+            }
+
+            // Add sample events if none exist
+            if (globalData.events.length === 0) {
+                globalData.events = [
+                    {
+                        name: 'School Sports Day',
+                        description: 'Annual sports competition for all year groups',
+                        date: '2025-10-15',
+                        time: '09:00',
+                        location: 'School Sports Ground',
+                        createdBy: 'System',
+                        createdAt: new Date().toLocaleString()
+                    },
+                    {
+                        name: 'Parent-Teacher Conference',
+                        description: 'Meet with teachers to discuss student progress',
+                        date: '2025-10-20',
+                        time: '14:00',
+                        location: 'Main Hall',
+                        createdBy: 'System',
+                        createdAt: new Date().toLocaleString()
+                    }
+                ];
+            }
+
+            // Add sample gallery items if none exist
+            if (globalData.gallery.length === 0) {
+                globalData.gallery = [
+                    {
+                        title: 'School Assembly',
+                        image: 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iIzY2N2VlYSIvPjx0ZXh0IHg9IjE1MCIgeT0iMTAwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMjAiIGZpbGw9IndoaXRlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkeT0iLjNlbSI+U2Nob29sIEFzc2VtYmx5PC90ZXh0Pjwvc3ZnPg==',
+                        uploadedAt: new Date().toLocaleString()
+                    },
+                    {
+                        title: 'Science Fair',
+                        image: 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iIzc2NGJhMiIvPjx0ZXh0IHg9IjE1MCIgeT0iMTAwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMjAiIGZpbGw9IndoaXRlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkeT0iLjNlbSI+U2NpZW5jZSBGYWlyPC90ZXh0Pjwvc3ZnPg==',
+                        uploadedAt: new Date().toLocaleString()
+                    }
+                ];
+            }
+
+            saveGlobalData();
+        }
+
+        // Auto-save functionality
+        function enableAutoSave() {
+            // Auto-save every 2 minutes
+            setInterval(() => {
+                saveGlobalData();
+                console.log('Auto-saved data at', new Date().toLocaleString());
+            }, 120000);
+        }
+
+        // Page visibility handling for real-time updates
+        function handleVisibilityChange() {
+            if (!document.hidden) {
+                // Reload data when page becomes visible
+                loadGlobalData();
+                
+                // Refresh current view if needed
+                const activePage = document.querySelector('.page.active');
+                if (activePage) {
+                    const pageId = activePage.id;
+                    if (pageId === 'home') initializeHomePage();
+                    else if (pageId === 'staff') initializeStaffPage();
+                    else if (pageId === 'gallery') initializeGalleryPage();
+                    else if (pageId === 'news') initializeNewsPage();
+                }
+            }
+        }
+
+        // Add event listeners for real-time updates
+        document.addEventListener('visibilitychange', handleVisibilityChange);
+
+        // Animation trigger on scroll
+        function animateOnScroll() {
+            const cards = document.querySelectorAll('.card');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.animation = 'slideIn 0.6s ease-out';
+                    }
+                });
+            });
+
+            cards.forEach(card => {
+                observer.observe(card);
+            });
+        }
+
+        // Enhanced cursor effect
+        function createCursorTrail() {
+            const trail = [];
+            const trailLength = 20;
+            
+            for (let i = 0; i < trailLength; i++) {
+                const dot = document.createElement('div');
+                dot.style.position = 'fixed';
+                dot.style.width = '4px';
+                dot.style.height = '4px';
+                dot.style.background = `linear-gradient(45deg, #4FC3F7, #2196F3)`;
+                dot.style.borderRadius = '50%';
+                dot.style.pointerEvents = 'none';
+                dot.style.zIndex = '9999';
+                dot.style.opacity = '0';
+                document.body.appendChild(dot);
+                trail.push(dot);
+            }
+            
+            let mouseX = 0, mouseY = 0;
+            let currentX = 0, currentY = 0;
+            
+            document.addEventListener('mousemove', (e) => {
+                mouseX = e.clientX;
+                mouseY = e.clientY;
+            });
+            
+            function animateTrail() {
+                currentX += (mouseX - currentX) * 0.1;
+                currentY += (mouseY - currentY) * 0.1;
+                
+                trail.forEach((dot, index) => {
+                    const nextDot = trail[index + 1] || { offsetLeft: currentX, offsetTop: currentY };
+                    
+                    dot.style.left = nextDot.offsetLeft + 'px';
+                    dot.style.top = nextDot.offsetTop + 'px';
+                    dot.style.opacity = (trailLength - index) / trailLength;
+                    dot.style.transform = `scale(${(trailLength - index) / trailLength})`;
+                });
+                
+                requestAnimationFrame(animateTrail);
+            }
+            
+            animateTrail();
+        }
+
+        // Initialize everything when page loads
+        window.addEventListener('load', () => {
+            initializeDefaultData();
+            initializeHomePage();
+            initializeStaffPage();
+            initializeGalleryPage();
+            initializeNewsPage();
+            enableAutoSave();
+            animateOnScroll();
+            createCursorTrail();
+            
+            // Add floating particles animation
+            createFloatingParticles();
+        });
+
+        function createFloatingParticles() {
+            for (let i = 0; i < 50; i++) {
+                const particle = document.createElement('div');
+                particle.style.position = 'fixed';
+                particle.style.width = '2px';
+                particle.style.height = '2px';
+                particle.style.background = 'rgba(255, 255, 255, 0.1)';
+                particle.style.borderRadius = '50%';
+                particle.style.pointerEvents = 'none';
+                particle.style.zIndex = '1';
+                particle.style.animation = `float ${Math.random() * 10 + 5}s ease-in-out infinite`;
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.top = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 5 + 's';
+                document.body.appendChild(particle);
+            }
+        }
+
+        // Add floating animation keyframes
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes float {
+                0%, 100% { transform: translateY(0px) rotate(0deg); opacity: 0.1; }
+                50% { transform: translateY(-20px) rotate(180deg); opacity: 0.3; }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Keyboard shortcuts
+        document.addEventListener('keydown', (e) => {
+            if (e.ctrlKey || e.metaKey) {
+                switch(e.key) {
+                    case 'h':
+                        e.preventDefault();
+                        showPage('home');
+                        break;
+                    case 's':
+                        e.preventDefault();
+                        showPage('staff');
+                        break;
+                    case 'g':
+                        e.preventDefault();
+                        showPage('gallery');
+                        break;
+                    case 'a':
+                        e.preventDefault();
+                        showPage('applications');
+                        break;
+                }
+            }
+        });
+
+        console.log('🎓 School Website System Initialized Successfully!');
+        console.log('📊 Features: Multi-user authentication, Real-time data sync, Discord webhooks, File management');
+        console.log('🔧 Keyboard shortcuts: Ctrl+H (Home), Ctrl+S (Staff), Ctrl+G (Gallery), Ctrl+A (Applications)');
+    </script>
+</body>
+</html>
+                    
